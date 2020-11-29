@@ -2,78 +2,121 @@
 const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 const currentDate = new Date()
-const currentDay = currentDate.getDate()
-const currentWeek = currentDate.getDay()
-const currentMonth = currentDate.getMonth()
-const currentYear = currentDate.getFullYear()
+currentDate.setDate(1)
 
 const $dates = document.querySelector('#dates')
 const $month = document.querySelector('#month')
 const $year = document.querySelector('#year')
 
-const $prevMonthDOM = document.querySelector('#prev_month')
-const $nextMonthDOM = document.querySelector('#next_month')
+const $lastMonthArrow = document.querySelector('#last_month')
+const $nextMonthArrow = document.querySelector('#next_month')
 
-let eachMonth = currentMonth
-let eachYear = currentYear
+// EventListener
+$lastMonthArrow.addEventListener('click', showPreviousMonth);
+$nextMonthArrow.addEventListener('click', showNextMonth);
 
-
-const getTotalDays = function (month, year) {
-    return new Date(year, month, 0).getDate()
-    // getTotalDays(currentMonth, currentYear)
+function getTotalDays(date) {
+    const month = date.getMonth()
+    const year = date.getFullYear()
+    return new Date(year, month + 1, 0).getDate()
+    // https://stackoverflow.com/a/1184359
 }
 
-// Show in DOM
-month.textContent = monthNames[currentMonth]
-year.textContent = currentYear.toString()
+function createDayElement(dayOfTheMonth, isOutOfTheMonthDay) {
+    const $day = document.createElement('div')
+    $day.classList.add('calendar__day', 'calendar__item')
 
-const weeks = document.querySelector('.calendar__week')
-
-
-// Days of the last month 
-for (let i = 0; i < dayOfTheWeek(); i++){
-    const divDays = document.createElement('div')
-    divDays.classList.add('calendar__day', 'calendar__item')
-    divDays.innerHTML = ''
-    weeks.appendChild(divDays)
-}
-
-// Days of the actual month 
-for (let index = 1; index <= getTotalDays(eachMonth, currentYear); index++) {
-    const divDays = document.createElement('div')
-    divDays.classList.add('calendar__day', 'calendar__item')
-    divDays.innerHTML = index
-    weeks.appendChild(divDays)
-}
-
-function dayOfTheWeek() {
-    const start = new Date(eachYear, eachMonth, 1)
-    return ((start.getDay()-1) === -1) ? 6 : start.getDay()-1
-
-}
-
-
-function preMonth() {
-    if (eachMonth === 0) {
-        eachMonth = 11
-    } else {
-        eachMonth --
+    if (isOutOfTheMonthDay) {
+        $day.classList.add('calendar__day--other')
     }
-    setNewYear()
 
+    $day.innerHTML = dayOfTheMonth
+
+    // $day.addEventListener('click', clickDay)
+
+    return $day
 }
 
-function nextMonth() {
-    if (eachMonth === 11) {
-        eachMonth = 0
-    } else {
-        eachMonth ++
+function removeDayElement($day) {
+    // $day.removeEventListener('click', clickDay)
+    $day.remove()
+}
+
+function emptyDaysContainer() {
+    $dates.querySelectorAll('.calendar__day').forEach(removeDayElement)
+}
+
+function showCurrentMonth() {
+    emptyDaysContainer()
+
+    const lastMonthDate = new Date(currentDate)
+    lastMonthDate.setMonth(currentDate.getMonth() - 1)
+
+    const lastMonthDaysAmount = getTotalDays(lastMonthDate)
+
+    const currentMonthDaysAmount = getTotalDays(currentDate)
+
+    const currentMonthFirstDay = getMonthFirstDay(currentDate)
+    const currentMonthFirstDayWeekDayIndex = getDateWeekDayIndex(currentMonthFirstDay)
+
+    const currentMonthLastDay = getMonthLastDay(currentDate)
+    const currentMonthLastDayWeekDayIndex = getDateWeekDayIndex(currentMonthLastDay)
+
+    // Days of the last month 
+    for (let i = currentMonthFirstDayWeekDayIndex; i > 0; i--) {
+        const dayOfTheMonth = lastMonthDaysAmount - (i - 1)
+        const $thisDay = createDayElement(dayOfTheMonth, true)
+        $dates.appendChild($thisDay)
     }
-    setNewYear()
+
+    // Days of the actual month 
+    for (let i = 1; i <= currentMonthDaysAmount; i++) {
+        const dayOfTheMonth = i
+        const $thisDay = createDayElement(dayOfTheMonth, false)
+        $dates.appendChild($thisDay)
+    }
+
+    // Days of the next month
+    const nextMonthAmountOfDaysToShow = 6 - currentMonthLastDayWeekDayIndex
+    for (let i = 1; i <= nextMonthAmountOfDaysToShow; i++){
+        const dayOfTheMonth = i
+        const $thisDay = createDayElement(dayOfTheMonth, true)
+        $dates.appendChild($thisDay)
+    }
+
+    $month.textContent = monthNames[currentDate.getMonth()]
+    $year.textContent = currentDate.getFullYear()
 }
 
-function setNewYear() {
-    currentDate.setFullYear(eachYear, eachMonth, currentDay)
-    month.textContent = monthName[eachMonth]
-    year.textContent = eachYear.toString()
+function getMonthFirstDay(date) {
+    const month = date.getMonth()
+    const year = date.getFullYear()
+    return new Date(year, month, 1)
 }
+
+function getMonthLastDay(date) {
+    const month = date.getMonth()
+    const year = date.getFullYear()
+    const monthDaysAmount = getTotalDays(date)
+    return new Date(year, month, monthDaysAmount)
+}
+
+function getDateWeekDayIndex(date) {
+    return (date.getDay() - 1) === -1
+        ? 6
+        : date.getDay() - 1
+}
+
+function showPreviousMonth() {
+    const previousMonth = currentDate.getMonth() - 1
+    currentDate.setMonth(previousMonth)
+    showCurrentMonth()
+}
+
+function showNextMonth() {
+    const nextMonth = currentDate.getMonth() + 1
+    currentDate.setMonth(nextMonth)
+    showCurrentMonth()
+}
+
+showCurrentMonth()

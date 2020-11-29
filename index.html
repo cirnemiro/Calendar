@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <script defer src="assets/js/calendar.js"></script>
 </head>
 <body>
     <h1>Calendar interactive</h1>
     <article class="calendar">
         <section class="calendar__info">
-            <div class="calendar__prev" id="prev_month">&#9664</div>
+            <div class="calendar__last" id="last_month">&#9664</div>
             <div class="calendar__month" id="month"></div>
             <div class="calendar__year" id="year"></div>
-            <div class="calendar__next" id="next_month">&#9664</div>
+            <div class="calendar__next" id="next_month">&#9654</div>
         </section>
 
         <section class="calendar__week">
@@ -24,12 +25,10 @@
             <div class="calendar__day calendar__item">Thu</div>
             <div class="calendar__day calendar__item">Fri</div>
             <div class="calendar__day calendar__item">Sat</div>
-            <div class="calendar__day calendar__item">San</div>
+            <div class="calendar__day calendar__item">Sun</div>
         </section>
 
-        <section class="calendar__dates" id="dates">
-
-        </section>
+        <section class="calendar__dates" id="dates"></section>
 
     </article>
 </body>

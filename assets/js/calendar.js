@@ -43,7 +43,7 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
     $day.innerHTML = `
         <div style="border: 1px solid black" class="calendar-day__template">
             <div>${weekDays[dayOfTheWeek]}</div>
-            <div>${dayOfTheMonth}</div>
+            <div class="divDay">${dayOfTheMonth}</div>
             <div class="calendar-day-template__events" >event1</div>
             <div class="calendar-day-template__events" >event2</div>
             <div class="calendar-day-template__events" >event3</div>
@@ -54,6 +54,7 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
 
     function clickDay() {
         console.log($day.dataset.day);
+        showCreatedNewEvent()
     }
 
     return $day
@@ -162,26 +163,3 @@ function showNextMonth() {
 }
 
 showCurrentMonth()
-
-$buttonEvent.addEventListener('click', showCreatedNewEvent)
-const $cross = document.querySelector('.cross').addEventListener('click', hiddenNewEvent)
-const enric= document.querySelector('.enric')
-enric.addEventListener('click',hiddenNewEvent)
-
-document.onkeydown = function(evt) {
-    evt = evt || window.event
-    if (evt.key === 27 || evt.key === "Escape" || evt.key === "esc") {
-        hiddenNewEvent()
-    }
-}
-
-function showCreatedNewEvent() {
-    document.querySelector('.enric').classList.remove('hidden')
-    document.querySelector('.new-event-form').classList.remove('hidden')
-    document.getElementById('enric').classList.remove('hidden')
-}
-function hiddenNewEvent() {
-    document.querySelector('.enric').classList.add('hidden')
-    document.querySelector('.new-event-form').classList.add('hidden')
-    document.getElementById('enric').classList.add('hidden')
-}

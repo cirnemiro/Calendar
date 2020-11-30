@@ -16,7 +16,7 @@
 .calendar__week, .calendar__dates{
     display: grid;
     text-align: center;
-    line-height: 2;
+    /* line-height: 2; */
     grid-template-columns: repeat(7, 1fr);
 }
 .calendar__last, .calendar__next{
@@ -34,9 +34,27 @@
     padding: .5em 1em;
 }
 .calendar__dates .calendar__day{
-    height: 4em;
+    height: auto;
 }
 
 .calendar__day--other{
     color: blueviolet;
+}
+/*ENRIC*/
+.calendar-day__template{
+    border-radius: 5px;
+    padding-bottom: 5px;
+}
+.calendar-day__template div:nth-of-type(1){
+  font-size: 0.7em;
+}
+.calendar-day__template div:nth-of-type(2){
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+   
+}
+.calendar-day-template__events{
+    font-size: 0.7em;
 }

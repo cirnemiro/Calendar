@@ -53,7 +53,7 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
     $day.addEventListener('click', clickDay)
 
     function clickDay() {
-        console.log($day.dataset.day);
+        // showCreatedNewEvent()
     }
 
     return $day

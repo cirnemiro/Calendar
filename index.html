@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <script defer src="assets/js/models.js"></script>
     <script defer src="assets/js/calendar.js"></script>
+    <script defer src="assets/js/modalCreated.js"></script>
 </head>
 <body class="body">
     <section>
@@ -23,16 +24,6 @@
             <div class="calendar__year" id="year"></div>
             <div class="calendar__next" id="next_month">&#9654</div>
         </section>
-
-        <!-- <section class="calendar__week">
-            <div class="calendar__day calendar__item">Mon</div>
-            <div class="calendar__day calendar__item">Tue</div>
-            <div class="calendar__day calendar__item">Wed</div>
-            <div class="calendar__day calendar__item">Thu</div>
-            <div class="calendar__day calendar__item">Fri</div>
-            <div class="calendar__day calendar__item">Sat</div>
-            <div class="calendar__day calendar__item">Sun</div>
-        </section> -->
 
         <section class="calendar__dates" id="dates"></section>
 
@@ -57,7 +48,7 @@
                     <input type="date" name="To" id="event-finish"><br>
                 <input type="checkbox" name="recordatory">
                 <label for="recordatory" class="label-event" >Recordatory</label>
-                <select id="event-recordatory">
+                <select id="event-recordatory" class="hidden">
                     <option value="5">5 minutos</option>
                     <option value="15">15 minutos</option>
                     <option value="30">30 minutos</option>

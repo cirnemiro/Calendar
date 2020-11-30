@@ -6,6 +6,7 @@
     <title>Calendar</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <script defer src="assets/js/models.js"></script>
     <script defer src="assets/js/calendar.js"></script>
 </head>
@@ -37,9 +38,13 @@
 
     </article>
 
-    <article class="new-event">
-        <section class="new-event-form">
-            <h2 class="title-modal">Create new event</h2>
+    <article id="enric" class="hidden">
+        <section class="enric hidden"></section>
+        <section class="new-event-form hidden">
+            <div class="new-event-title">
+                <h2 class="title-modal">Create new event</h2>
+                <i class="fas fa-times cross"></i></span>
+            </div>
             <form action="" class="wrapper-form" id="form-new-event">
                 <h3>Name of the event</h3>
                 <label for="title-event" class="label-event">Title</label><br>

@@ -8,8 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <script defer src="assets/js/calendar.js"></script>
 </head>
-<body>
-    <h1>Calendar interactive</h1>
+<body class="new-event--open">
+    <section>
+        <h1>Calendar interactive</h1>
+        <button>New Event</button>
+    </section>
+
     <article class="calendar">
         <section class="calendar__info">
             <div class="calendar__last" id="last_month">&#9664</div>
@@ -29,6 +33,40 @@
         </section>
 
         <section class="calendar__dates" id="dates"></section>
+
+    </article>
+
+    <article class="new-event">
+        <section class="">
+            <h2 class="title-modal">Create new event</h2>
+           <form action="" class="wrapper-form">
+               <h3>Name of the event</h3>
+                <label for="title-event" class="label-event">Title</label><br>
+                    <input type="text" name="title-event" id="title-event" placeholder="Title of event">
+                <label for="from" class="label-event">From</label>
+                    <input type="date" name="from" id="">
+                <label for="To" class="label-event">To</label>
+                    <input type="date" name="To" id="">
+                <input type="checkbox" name="recordatory"> 
+                <label for="recordatory" class="label-event">Recordatory</label>
+                <select id="recordatory" class="">
+                    <option value="5">5 minutos</option>
+                    <option value="15">15 minutos</option>
+                    <option value="30">30 minutos</option>
+                    <option value="1">1 hour</option>
+                </select>
+                    <option value="24">1 day before</option>
+                <label for="type-event" class="label-event">Type</label>
+                <select id="type-event" class="">
+                    <option value="meeting">Meeting</option>
+                    <option value="personal">Personal</option>
+                    <option value="study">Study</option>
+                    <option value="travel">Travel</option>
+                </select>
+               <label for="description" class="label-event">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+           </form>
+        </section>
 
     </article>
 </body>

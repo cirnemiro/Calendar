@@ -19,7 +19,6 @@
     line-height: 2;
     grid-template-columns: repeat(7, 1fr);
 }
-
 .calendar__last, .calendar__next{
     color: var(--color-principal);
     cursor: pointer;
@@ -36,4 +35,8 @@
 }
 .calendar__dates .calendar__day{
     height: 4em;
+}
+
+.calendar__day--other{
+    color: blueviolet;
 }

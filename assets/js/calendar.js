@@ -62,14 +62,14 @@ function showCurrentMonth() {
     const currentMonthLastDay = getMonthLastDay(currentDate)
     const currentMonthLastDayWeekDayIndex = getDateWeekDayIndex(currentMonthLastDay)
 
-    // Days of the last month 
+    // Days of the last month
     for (let i = currentMonthFirstDayWeekDayIndex; i > 0; i--) {
-        const dayOfTheMonth = lastMonthDaysAmount - (i - 1)
+        const dayOfTheMonth = lastMonthDaysAmount - (i -1)
         const $thisDay = createDayElement(dayOfTheMonth, true)
         $dates.appendChild($thisDay)
     }
 
-    // Days of the actual month 
+    // Days of the actual month
     for (let i = 1; i <= currentMonthDaysAmount; i++) {
         const dayOfTheMonth = i
         const $thisDay = createDayElement(dayOfTheMonth, false)

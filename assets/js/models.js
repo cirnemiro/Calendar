@@ -1,5 +1,6 @@
 const events = {
     title: "",
+    dataDay: ""
     dateStart: 0,
     dateFinish: 0,
     recordatory: [true, 0],
@@ -7,6 +8,4 @@ const events = {
     description: "",
 }
 
-function clickDay() {
-    console.log($day.dataset.day);
-}
+

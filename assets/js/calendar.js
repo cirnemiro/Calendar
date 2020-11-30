@@ -1,8 +1,14 @@
 
-const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December']
+const weekDays =['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
 
 const currentDate = new Date()
 currentDate.setDate(1)
+
+
+
+
+let dayOfTheWeek = 0
 
 const $dates = document.querySelector('#dates')
 const $month = document.querySelector('#month')
@@ -24,7 +30,7 @@ function getTotalDays(date) {
     // https://stackoverflow.com/a/1184359
 }
 
-function createDayElement(dayOfTheMonth, isOutOfTheMonthDay) {
+function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
     let $day = document.createElement('div')
     $day.classList.add('calendar__day', 'calendar__item')
     $day.dataset.day = dayOfTheMonth
@@ -33,7 +39,16 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay) {
         $day.classList.add('calendar__day--other')
     }
 
-    $day.innerHTML = dayOfTheMonth
+
+    $day.innerHTML = `
+        <div style="border: 1px solid black" class="calendar-day__template">
+            <div>${weekDays[dayOfTheWeek]}</div>
+            <div>${dayOfTheMonth}</div>
+            <div class="calendar-day-template__events" >event1</div>
+            <div class="calendar-day-template__events" >event2</div>
+            <div class="calendar-day-template__events" >event3</div>
+        </div>
+    `
 
     $day.addEventListener('click', clickDay)
 
@@ -69,18 +84,30 @@ function showCurrentMonth() {
 
     const currentMonthLastDay = getMonthLastDay(currentDate)
     const currentMonthLastDayWeekDayIndex = getDateWeekDayIndex(currentMonthLastDay)
+    
 
     // Days of the last month
     for (let i = currentMonthFirstDayWeekDayIndex; i > 0; i--) {
         const dayOfTheMonth = lastMonthDaysAmount - (i -1)
-        const $thisDay = createDayElement(dayOfTheMonth, true)
+        const $thisDay = createDayElement(dayOfTheMonth, true, dayOfTheWeek)
+        dayOfTheWeek++
+        if(dayOfTheWeek===7){
+            dayOfTheWeek=0
+        }
+
+
         $dates.appendChild($thisDay)
     }
 
     // Days of the actual month
     for (let i = 1; i <= currentMonthDaysAmount; i++) {
         const dayOfTheMonth = i
-        const $thisDay = createDayElement(dayOfTheMonth, false)
+        const $thisDay = createDayElement(dayOfTheMonth, false, dayOfTheWeek)
+        dayOfTheWeek++
+        if(dayOfTheWeek===7){
+            dayOfTheWeek=0
+        }
+
         $dates.appendChild($thisDay)
     }
 
@@ -88,7 +115,14 @@ function showCurrentMonth() {
     const nextMonthAmountOfDaysToShow = 6 - currentMonthLastDayWeekDayIndex
     for (let i = 1; i <= nextMonthAmountOfDaysToShow; i++){
         const dayOfTheMonth = i
-        const $thisDay = createDayElement(dayOfTheMonth, true)
+        const $thisDay = createDayElement(dayOfTheMonth, true, dayOfTheWeek)
+        dayOfTheWeek++
+        if(dayOfTheWeek===7){
+            dayOfTheWeek=0
+        }
+
+
+
         $dates.appendChild($thisDay)
     }
 
@@ -136,7 +170,7 @@ function showCreatedNewEvent() {
 //     document.querySelector('.new-event-form').classList.add('new-event-form--hidden')
 }
 
-document.querySelector('.new-event').addEventListener('click', hiddenNewEvent)
+
 function hiddenNewEvent() {
     // document.querySelector('.new-event').classList.remove('new-event--visible')
     // document.querySelector('.new-event-form').classList.remove('new-event-form--hidden')

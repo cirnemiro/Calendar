@@ -8,6 +8,8 @@ const $dates = document.querySelector('#dates')
 const $month = document.querySelector('#month')
 const $year = document.querySelector('#year')
 
+const $buttonEvent = document.querySelector('#btn-newEvent')
+
 const $lastMonthArrow = document.querySelector('#last_month')
 const $nextMonthArrow = document.querySelector('#next_month')
 
@@ -23,8 +25,9 @@ function getTotalDays(date) {
 }
 
 function createDayElement(dayOfTheMonth, isOutOfTheMonthDay) {
-    const $day = document.createElement('div')
+    let $day = document.createElement('div')
     $day.classList.add('calendar__day', 'calendar__item')
+    $day.dataset.day = dayOfTheMonth
 
     if (isOutOfTheMonthDay) {
         $day.classList.add('calendar__day--other')
@@ -32,10 +35,15 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay) {
 
     $day.innerHTML = dayOfTheMonth
 
-    // $day.addEventListener('click', clickDay)
+    $day.addEventListener('click', clickDay)
+
+    function clickDay() {
+        console.log($day.dataset.day);
+    }
 
     return $day
 }
+
 
 function removeDayElement($day) {
     // $day.removeEventListener('click', clickDay)
@@ -120,3 +128,17 @@ function showNextMonth() {
 }
 
 showCurrentMonth()
+
+$buttonEvent.addEventListener('click', showCreatedNewEvent)
+
+function showCreatedNewEvent() {
+//     document.querySelector('.new-event').classList.add('new-event--visible')
+//     document.querySelector('.new-event-form').classList.add('new-event-form--hidden')
+}
+
+document.querySelector('.new-event').addEventListener('click', hiddenNewEvent)
+function hiddenNewEvent() {
+    // document.querySelector('.new-event').classList.remove('new-event--visible')
+    // document.querySelector('.new-event-form').classList.remove('new-event-form--hidden')
+
+}

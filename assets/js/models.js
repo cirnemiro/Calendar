@@ -18,6 +18,8 @@ function addNewEvent(e) {
     document.querySelector('#form-new-event').reset()
 }
 
+$buttonCreatedEvent.addEventListener('click', addNewEvent)
+
 function getOfLocalStorage() {
     let localEventList = localStorage.getItem('AllTheEvents')
     //if localStorage is empty
@@ -30,8 +32,6 @@ function getOfLocalStorage() {
 
     return allTheEvents
 }
-
-// console.log(getOfLocalStorage()[2].title);
 
 
 console.log(getOfLocalStorage(),'este es');

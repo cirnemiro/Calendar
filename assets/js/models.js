@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-const events = {
-    title: "",
-    dataDay: "",
-    dateStart: 0,
-    dateFinish: 0,
-    recordatory: [true, 0],
-    type: "",
-    description: "",
-=======
 const $buttonCreatedEvent = document.querySelector('#create-event')
 
 let allTheEvents = []
@@ -26,10 +16,6 @@ function addNewEvent(e) {
 
     saveInLocalStorage(allTheEvents)
     document.querySelector('#form-new-event').reset()
-<<<<<<< HEAD
-=======
->>>>>>> origin/develop
->>>>>>> 32ef48196336dfca86eef41ea60a1af9dafc3e7e
 }
 
 function getOfLocalStorage() {
@@ -53,7 +39,6 @@ console.log(getOfLocalStorage(),'este es');
 function saveInLocalStorage(listevent) {
     localStorage.setItem('AllTheEvents', JSON.stringify(listevent))
 
->>>>>>> develop
 }
 
 

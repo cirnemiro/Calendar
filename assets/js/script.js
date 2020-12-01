@@ -30,6 +30,8 @@ currentDate.setDate(1)
 
 let dayOfTheWeek = 0
 let allTheEvents = []
+let year20 = []
+let year21 = []
 
 
 // EventListener
@@ -68,12 +70,28 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
     let event2 = ""
     let event3 = ""
 
-    for (let i = 0; i < arrayLocalStorage.length; i++) {
-        if (arrayLocalStorage[i].dateStart === `2020-12-${dayOfTheMonth}`) {
-            event1 = arrayLocalStorage[i].title
-
-        }
-    }
+    let i = 0
+    // for (i ; i < arrayLocalStorage.length; i++) {
+    //     if (arrayLocalStorage[i].dateStart === `2020-12-${dayOfTheMonth}`) {
+    //         event1 = arrayLocalStorage[i].title
+    //         i++
+    //         break
+    //     }
+    // }
+    // for (i ; i < arrayLocalStorage.length; i++) {
+    //     if (arrayLocalStorage[i].dateStart === `2020-12-${dayOfTheMonth}`) {
+    //         event2 = arrayLocalStorage[i].title
+    //         i++
+    //         break
+    //     }
+    // }
+    // for (i ; i < arrayLocalStorage.length; i++) {
+    //     if (arrayLocalStorage[i].dateStart === `2020-12-${dayOfTheMonth}`) {
+    //         event3 = arrayLocalStorage[i].title
+    //         i++
+    //         break
+    //     }
+    // }
 
     if (isOutOfTheMonthDay) {
         $day.classList.add('calendar__day--other')
@@ -237,6 +255,8 @@ function addNewEvent() {
     allTheEvents.push(event)
 
     saveInLocalStorage(allTheEvents)
+   
+    
     document.querySelector('#form-new-event').reset()
 }
 

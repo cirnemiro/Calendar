@@ -1,4 +1,8 @@
 $buttonEvent.addEventListener('click', showCreatedNewEvent)
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
 const $cross = document.querySelector('.cross').addEventListener('click', hiddenNewEvent)
 const enric= document.querySelector('.enric')
 enric.addEventListener('click',hiddenNewEvent)
@@ -14,6 +18,12 @@ function showCreatedNewEvent() {
     document.querySelector('.enric').classList.remove('hidden')
     document.querySelector('.new-event-form').classList.remove('hidden')
     document.getElementById('enric').classList.remove('hidden')
+<<<<<<< HEAD
+=======
+    if (document.getElementById('recordatory').checked == true) {
+        document.querySelector('.event-recordatory').classList.add('visible')
+    }
+>>>>>>> origin/develop
 }
 function hiddenNewEvent() {
     document.querySelector('.enric').classList.add('hidden')

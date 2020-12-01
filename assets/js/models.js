@@ -1,9 +1,7 @@
-const $buttonCreatedEvent = document.querySelector('#create-event')
-
 let allTheEvents = []
 
-function addNewEvent(e) {
-    e.preventDefault();
+function addNewEvent() {
+    
     let event = {
         title: document.querySelector('#event-title').value,
         dateStart: document.querySelector('#event-start').value,
@@ -17,8 +15,6 @@ function addNewEvent(e) {
     saveInLocalStorage(allTheEvents)
     document.querySelector('#form-new-event').reset()
 }
-
-$buttonCreatedEvent.addEventListener('click', addNewEvent)
 
 function getOfLocalStorage() {
     let localEventList = localStorage.getItem('AllTheEvents')

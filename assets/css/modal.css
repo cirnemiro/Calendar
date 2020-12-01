@@ -31,10 +31,6 @@
 .new-event-title .cross{
     color: #fff;
 }
-.visible {
-    visibility: visible;
-    opacity: 1;
-}
 .hidden{
     visibility: hidden;
     opacity: 0;
@@ -52,7 +48,7 @@
     font-size: 14px;
     color: #747D8E;
 }
-.wrapper-form input[type=text]{
+.wrapper-form #event-title{
     width: 100%;
     padding-bottom: 5px;
     appearance: none;
@@ -62,3 +58,16 @@
     color: black;
     margin: 10px 0;
 }
+.wrapper-form-dates{
+    margin-bottom: 20px;
+    width: 100%;
+}
+.wrapper-form-dates__1{
+    width: 50%;
+}
+.wrapper-form-dates input[type="date"]{
+    width: 90%;
+    margin: 10px 0 0 0 ;
+}
+
+

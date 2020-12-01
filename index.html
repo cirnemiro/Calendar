@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <script defer src="assets/js/calendar.js"></script>
-    <script defer src="assets/js/models.js"></script>
-    <script defer src="assets/js/modalCreated.js"></script>
+    <script defer src="assets/js/script.js"></script>
 </head>
 <body class="body">
     <section>
@@ -42,12 +40,18 @@
                 <h3>Name of the event</h3>
                 <label for="title-event" class="label-event">Title</label><br>
                     <input type="text" name="title-event" id="event-title" placeholder="Title of event" required>
-                <label for="from" class="label-event">From</label>
-                    <input type="date" name="from" id="event-start" required>
-                <label for="To" class="label-event">To</label>
-                    <input type="date" name="To" id="event-finish"><br>
+                <div class="flex wrapper-form-dates">
+                    <div class="wrapper-form-dates__1">
+                        <label for="from" class="label-event">From</label><br>
+                        <input type="date" name="from" id="event-start" required>
+                    </div>
+                    <div class="wrapper-form-dates__1">
+                        <label for="To" class="label-event">To</label><br>
+                        <input type="date" name="To" id="event-finish"><br>
+                    </div>
+                </div>
                 <input type="checkbox" name="recordatory" id="recordatory">
-                <label for="recordatory" class="label-event" >Recordatory</label>
+                <label for="recordatory" class="label-event" >Add notice or reminder</label>
                 <select id="event-recordatory" class="hidden">
                     <option value="5">5 minutos</option>
                     <option value="15">15 minutos</option>
@@ -56,15 +60,15 @@
                     <option value="24">1 day before</option>
                 </select><br>
                 <label for="type-event" class="label-event">Type</label>
-                <select id="event-type" class="">
-                    <option value="meeting">Meeting</option>
-                    <option value="personal">Personal</option>
-                    <option value="study">Study</option>
-                    <option value="travel">Travel</option>
+                <select id="event-type" class="" required>
+                    <option value="meeting"><span id="meeting"></span>Meeting</option>
+                    <option value="personal"><span id="personal"></span>Personal</option>
+                    <option value="work"><span id="work"></span>Work</option>
+                    <option value="travel"><span id="travel"></span>Travel</option>
                 </select><br>
                 <label for="description" class="label-event">Description</label><br>
                 <textarea name="description" id="description" cols="30" rows="10"></textarea><br>
-                <button id="create-event">Create event</button>
+                <button id="create-event" class="button__send">Create event</button>
             </form>
         </section>
 

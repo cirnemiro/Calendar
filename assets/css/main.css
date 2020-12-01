@@ -43,3 +43,35 @@ h1{
 h3{
     margin-bottom: 10px;
 }
+.flex{
+    display: flex;
+    flex-flow: row wrap;
+}
+.button__send{
+    text-decoration: none;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--color-principal);
+    background-color: #fff;
+    appearance: none;
+    border-radius: 15px;
+    width: 80%;
+    transition: background-color 1s ease;
+    height: 40px;
+    border: .5px solid var(--color-principal);;
+}
+.button__send:hover{
+    text-decoration: none;
+    padding: 0 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #fff;
+    background-color: #8D48AB;
+    appearance: none;
+    border-radius: 20px;
+    width: 80%;
+    cursor: pointer;
+    transition: 1s ease;
+    height: 40px;
+}

@@ -14,9 +14,6 @@ const $inputDataStart = document.querySelector('#event-start')
 const $lastMonthArrow = document.querySelector('#last_month')
 const $nextMonthArrow = document.querySelector('#next_month')
 
-const $timeSelected = document.querySelector('#event-recordatory');
-const $whichTimeSelected = $timeSelected.value;
-const $whichTypeSelected = $timeSelected.options[$timeSelected.selectedIndex].text;
 
 const enric = document.querySelector('.enric')
 
@@ -61,6 +58,8 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
     let $day = document.createElement('div')
     $day.classList.add('calendar__day', 'calendar__item')
     $day.dataset.day = dayOfTheMonth
+    
+
     const stringLocalstorage = localStorage.getItem('AllTheEvents')
     const arrayLocalStorage = JSON.parse(stringLocalstorage)
 
@@ -225,11 +224,13 @@ function hiddenNewEvent() {
 // Functions of localStorage --------------------------------------------------------------------------------------------------------
 
 function addNewEvent() {
-    
+
     let event = {
         title: document.querySelector('#event-title').value,
         dateStart: document.querySelector('#event-start').value,
-        dataFinish: document.querySelector('#event-start').value,
+        dataFinish: document.querySelector('#event-finish').value,
+        dataTimeStart: document.querySelector('#event-hStart').value,
+        dataTimeFinish: document.querySelector('#event-hFinish').value,
         recordatory: document.querySelector('#recordatory').checked,
         type: document.querySelector('#event-title').value,
         description: document.querySelector('#description').value
@@ -256,6 +257,12 @@ function getOfLocalStorage() {
 function saveInLocalStorage(listevent) {
     localStorage.setItem('AllTheEvents', JSON.stringify(listevent))
 
+}
+
+
+function startRecordatory() {
+
+    //
 }
 
 // Fuctions of Validation
@@ -287,6 +294,12 @@ function validationEvent(e) {
 
 function checkedRecordatory() {
     if (document.getElementById('recordatory').checked) {
-        document.querySelector('#event-recordatory').classList.remove('hidden')
+        const $selected = document.querySelector('#event-recordatory')
+        $selected.classList.remove('hidden')
+
+        const $timeSelected = $selected.options[$selected.selectedIndex].value
+        const $whichTypeSelected = $selected.options[$selected.selectedIndex].text;
+        console.log($whichTypeSelected);
+        console.log($timeSelected);
     }
 }

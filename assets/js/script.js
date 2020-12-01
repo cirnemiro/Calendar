@@ -14,6 +14,10 @@ const $inputDataStart = document.querySelector('#event-start')
 const $lastMonthArrow = document.querySelector('#last_month')
 const $nextMonthArrow = document.querySelector('#next_month')
 
+const $timeSelected = document.querySelector('#event-recordatory');
+const $whichTimeSelected = $timeSelected.value;
+const $whichTypeSelected = $timeSelected.options[$timeSelected.selectedIndex].text;
+
 const enric = document.querySelector('.enric')
 
 // Global Variables
@@ -57,6 +61,19 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
     let $day = document.createElement('div')
     $day.classList.add('calendar__day', 'calendar__item')
     $day.dataset.day = dayOfTheMonth
+    const stringLocalstorage = localStorage.getItem('AllTheEvents')
+    const arrayLocalStorage = JSON.parse(stringLocalstorage)
+
+    let event1 = ""
+    let event2 = ""
+    let event3 = ""
+
+    for (let i = 0; i < arrayLocalStorage.length; i++) {
+        if (arrayLocalStorage[i].dateStart === `2020-12-${dayOfTheMonth}`) {
+            event1 = arrayLocalStorage[i].title
+
+        }
+    }
 
     if (isOutOfTheMonthDay) {
         $day.classList.add('calendar__day--other')
@@ -67,9 +84,9 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
         <div style="border: 1px solid black" class="calendar-day__template">
             <div>${weekDays[dayOfTheWeek]}</div>
             <div class="divDay">${dayOfTheMonth}</div>
-            <div class="calendar-day-template__events" >event1</div>
-            <div class="calendar-day-template__events" >event2</div>
-            <div class="calendar-day-template__events" >event3</div>
+            <div class="calendar-day-template__events" >${event1}&nbsp;</div>
+            <div class="calendar-day-template__events" >${event2}&nbsp;</div>
+            <div class="calendar-day-template__events" >${event3}&nbsp;</div>
         </div>
     `
 
@@ -241,20 +258,17 @@ function saveInLocalStorage(listevent) {
 
 }
 
-// Fuctions of Validation --------------------------------------------------------------------------------------------------------
+// Fuctions of Validation
 
 function validationEvent(e) {
     e.preventDefault();
-    alert('nos llega')
     let validation = true
     for (var i=0; i < $inputText.length; i++) {
         if ($inputText[i].value === "" || !/[a-zA-Z0-9.]+/.test($inputText[i].value)) {
             validation = false
-            console.log('validation es false');
             break
         } else {
             validation = true
-            console.log('validation es true');
         }
     }
 
@@ -268,6 +282,7 @@ function validationEvent(e) {
         addNewEvent()
         hiddenNewEvent()
     }
+
 }
 
 function checkedRecordatory() {

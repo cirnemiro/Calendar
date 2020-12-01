@@ -50,14 +50,24 @@
                         <input type="date" name="To" id="event-finish"><br>
                     </div>
                 </div>
+                <div class="flex wrapper-form-dates">
+                    <div class="wrapper-form-dates__1">
+                        <label for="startin" class="label-event">Start in</label><br>
+                        <input type="time" name="startin" id="event-hStart" required>
+                    </div>
+                    <div class="wrapper-form-dates__1">
+                        <label for="finish" class="label-event">finish in</label><br>
+                        <input type="time" name="finish" id="event-hFinish"><br>
+                    </div>
+                </div>
                 <input type="checkbox" name="recordatory" id="recordatory">
                 <label for="recordatory" class="label-event" >Add notice or reminder</label>
                 <select id="event-recordatory" class="hidden">
-                    <option value="5">5 minutos</option>
-                    <option value="15">15 minutos</option>
-                    <option value="30">30 minutos</option>
-                    <option value="1">1 hour</option>
-                    <option value="24">1 day before</option>
+                    <option value="300">5 minutos</option>
+                    <option value="900">15 minutos</option>
+                    <option value="1800">30 minutos</option>
+                    <option value="3600">1 hour</option>
+                    <option value="86400">1 day before</option>
                 </select><br>
                 <label for="type-event" class="label-event">Type</label>
                 <select id="event-type" class="" required>

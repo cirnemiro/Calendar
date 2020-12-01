@@ -84,7 +84,7 @@ function showCurrentMonth() {
 
     const currentMonthLastDay = getMonthLastDay(currentDate)
     const currentMonthLastDayWeekDayIndex = getDateWeekDayIndex(currentMonthLastDay)
-    
+
 
     // Days of the last month
     for (let i = currentMonthFirstDayWeekDayIndex; i > 0; i--) {

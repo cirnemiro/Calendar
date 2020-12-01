@@ -1,3 +1,9 @@
+$buttonEvent.addEventListener('click', showCreatedNewEvent)
+
+const $cross = document.querySelector('.cross').addEventListener('click', hiddenNewEvent)
+const enric= document.querySelector('.enric')
+enric.addEventListener('click',hiddenNewEvent)
+
 document.onkeydown = function(evt) {
     evt = evt || window.event
     if (evt.key === 27 || evt.key === "Escape" || evt.key === "esc") {

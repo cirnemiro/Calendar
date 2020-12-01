@@ -53,7 +53,7 @@ function createDayElement(dayOfTheMonth, isOutOfTheMonthDay,dayOfTheWeek) {
     $day.addEventListener('click', clickDay)
 
     function clickDay() {
-        // showCreatedNewEvent()
+        showCreatedNewEvent()
     }
 
     return $day

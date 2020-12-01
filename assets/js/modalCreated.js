@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 $buttonEvent.addEventListener('click', showCreatedNewEvent)
 const $cross = document.querySelector('.cross').addEventListener('click', hiddenNewEvent)
 const enric= document.querySelector('.enric')
 enric.addEventListener('click',hiddenNewEvent)
 
+=======
+>>>>>>> develop
 document.onkeydown = function(evt) {
     evt = evt || window.event
     if (evt.key === 27 || evt.key === "Escape" || evt.key === "esc") {
@@ -14,7 +17,13 @@ function showCreatedNewEvent() {
     document.querySelector('.enric').classList.remove('hidden')
     document.querySelector('.new-event-form').classList.remove('hidden')
     document.getElementById('enric').classList.remove('hidden')
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> develop
 function hiddenNewEvent() {
     document.querySelector('.enric').classList.add('hidden')
     document.querySelector('.new-event-form').classList.add('hidden')

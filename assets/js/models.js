@@ -14,28 +14,31 @@ function addNewEvent(e) {
     }
     allTheEvents.push(event)
 
-    // saveInLocalStorage(event)
+    saveInLocalStorage(allTheEvents)
     document.querySelector('#form-new-event').reset()
 }
-$buttonCreatedEvent.addEventListener('click', addNewEvent)
-console.log(allTheEvents)
+
+function getOfLocalStorage() {
+    let localEventList = localStorage.getItem('AllTheEvents')
+    //if localStorage is empty
+    if (localEventList === null) {
+        allTheEvents = []
+    } else {
+        //How we are save in string, we need again the object
+        allTheEvents = JSON.parse(localEventList)
+    }
+
+    return allTheEvents
+}
+
+// console.log(getOfLocalStorage()[2].title);
 
 
-// function getOfLocalStorage() {
-//     let localEventList = localStorage.getItem('AllTheEvents')
-//     //if localStorage is empty
-//     if (localEventList === null) {
-//         allTheEvents = []
-//     } else {
-//         //How we are save in string, we need again the object
-//         allTheEvents = JSON.parse(localEventList)
-//     }
-//     return allTheEvents
-// }
+console.log(getOfLocalStorage(),'este es');
 
-// function saveInLocalStorage(listevent) {
-//     localStorage.setItem('AllTheEvents', JSON.stringify(listevent))
+function saveInLocalStorage(listevent) {
+    localStorage.setItem('AllTheEvents', JSON.stringify(listevent))
 
-// }
+}
 
 

@@ -7,14 +7,11 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <script defer src="assets/js/time.js"></script>
     <script defer src="assets/js/script.js"></script>
-    <script defer src="assets/js/model.js"></script>
 </head>
 <body class="body">
     <section>
         <h1>Calendar interactive</h1>
-        <button id="btn-newEvent">New Event</button>
     </section>
 
     <article class="calendar">
@@ -23,6 +20,7 @@
             <div class="calendar__month" id="month"></div>
             <div class="calendar__year" id="year"></div>
             <div class="calendar__next" id="next_month">&#9654</div>
+            <div><button class="button__send" id="btn-newEvent">New Event</button></div>
         </section>
 
         <section class="calendar__dates" id="dates"></section>
@@ -30,9 +28,9 @@
     </article>
 
 
-    <article id="enric" class="hidden">
-        <section class="enric hidden"></section>
-        <section class="new-event-form hidden">
+    <article class="modal hidden">
+        <section class="modal__overlay"></section>
+        <section class="new-event-form">
             <div class="new-event-title">
                 <h2 class="title-modal">Create new event</h2>
                 <i class="fas fa-times cross"></i></span>
@@ -48,29 +46,29 @@
                         <input type="date" name="from" id="event-start" required>
                     </div>
                     <div class="wrapper-form-dates__1">
-                        <label for="To" class="label-event">To</label><br>
-                        <input type="date" name="To" id="event-finish"><br>
-                    </div>
-                </div>
-                <div class="flex wrapper-form-dates">
-                    <div class="wrapper-form-dates__1">
                         <label for="startin" class="label-event">Start in</label><br>
-                        <input type="time" name="startin" id="event-hStart"required>
-                    </div>
-                    <div class="wrapper-form-dates__1">
-                        <label for="finish" class="label-event">Finish in</label><br>
-                        <input type="time" name="finish" id="event-hFinish"><br>
+                        <input type="time" name="startin" id="event-hStart" required>
                     </div>
                 </div>
                 <input type="checkbox" name="recordatory" id="recordatory">
                 <label for="recordatory" class="label-event" >Add notice or reminder</label>
-                <select id="event-recordatory" class="hidden">
-                    <option value="300">5 minutos</option>
-                    <option value="900">15 minutos</option>
-                    <option value="1800">30 minutos</option>
-                    <option value="3600">1 hour</option>
-                    <option value="86400">1 day before</option>
+                <select id="event-recordatory" class="hidden" required>
+                    <option value="300000">5 minutos</option>
+                    <option value="900000">15 minutos</option>
+                    <option value="1800000">30 minutos</option>
+                    <option value="3600000">1 hour</option>
+                    <option value="8640000">1 day before</option>
                 </select><br>
+                <div id="recordatoryFinish" class="flex wrapper-form-dates hidden">
+                    <div class="wrapper-form-dates__1">
+                        <label for="To" class="label-event">To</label><br>
+                        <input type="date" name="To" id="event-finish" required><br>
+                    </div>
+                    <div class="wrapper-form-dates__1">
+                        <label for="finish" class="label-event">Finish in</label><br>
+                        <input type="time" name="finish" id="event-hFinish" required><br>
+                    </div>
+                </div>
                 <label for="type-event" class="label-event">Type</label>
                 <select id="event-type" class="" required>
                     <option value="meeting"><span id="meeting"></span>Meeting</option>
@@ -79,11 +77,10 @@
                     <option value="travel"><span id="travel"></span>Travel</option>
                 </select><br>
                 <label for="description" class="label-event">Description</label><br>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea><br>
-                <button id="create-event" class="button__send">Create event</button>
+                <textarea name="description" id="description" cols="20" rows="5"></textarea><br>
+                <button id="create-event" class="button__send">Create event</button><button id="deleted-event" class="button__cancel">Cancel Event</button>
             </form>
         </section>
-
     </article>
 </body>
 </html>
